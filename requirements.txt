@@ -6,3 +6,5 @@ Werkzeug
 reportlab
 gunicorn
 python-dotenv
+requests
+APScheduler
