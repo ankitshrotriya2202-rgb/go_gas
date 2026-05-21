@@ -1,8 +1,0 @@
-Flask
-Flask-SQLAlchemy
-psycopg2-binary
-Flask-Login
-Werkzeug
-reportlab
-gunicorn
-python-dotenv
