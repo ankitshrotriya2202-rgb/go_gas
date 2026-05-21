@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Booking Invoice</title>
+
+    <style>
+
+        body{
+            background:#f1f5f9;
+            font-family:Arial;
+            padding:20px;
+        }
+
+        .invoice{
+
+            width:900px;
+
+            margin:auto;
+
+            background:white;
+
+            border:2px solid #111;
+
+            padding:18px;
+        }
+
+        .header{
+
+            display:flex;
+
+            align-items:flex-start;
+
+            border-bottom:2px solid #777;
+
+            padding-bottom:15px;
+        }
+
+        .logo img{
+            width:130px;
+        }
+
+        .agency{
+
+            flex:1;
+
+            text-align:center;
+        }
+
+        .agency-top{
+
+            display:flex;
+
+            justify-content:space-between;
+
+            align-items:flex-start;
+
+            margin-bottom:10px;
+        }
+
+        .agency-top p{
+
+            margin:0;
+
+            font-size:16px;
+
+            font-weight:bold;
+        }
+
+        .agency h1{
+
+            margin:0;
+
+            font-size:56px;
+
+            font-weight:900;
+        }
+
+        .agency h2{
+
+            margin:10px 0;
+
+            font-size:30px;
+
+            font-weight:bold;
+        }
+
+        .top-section{
+
+            margin-top:25px;
+
+            display:flex;
+
+            justify-content:space-between;
+        }
+
+        .left,
+        .right{
+
+            width:48%;
+        }
+
+        .field{
+
+            font-size:20px;
+
+            margin-bottom:18px;
+
+            font-weight:bold;
+        }
+
+        .line{
+
+            border-bottom:1px dotted black;
+
+            display:inline-block;
+
+            min-width:250px;
+
+            font-weight:normal;
+        }
+
+        table{
+
+            width:100%;
+
+            border-collapse:collapse;
+
+            margin-top:25px;
+        }
+
+        table th,
+        table td{
+
+            border:1px solid black;
+
+            padding:10px;
+
+            text-align:center;
+
+            font-size:18px;
+
+            vertical-align:middle;
+        }
+
+        .footer{
+
+            margin-top:35px;
+
+            display:flex;
+
+            justify-content:space-between;
+        }
+
+        .signature{
+
+            margin-top:70px;
+
+            width:250px;
+
+            border-top:2px solid black;
+
+            text-align:center;
+
+            padding-top:10px;
+
+            font-size:20px;
+
+            font-weight:bold;
+        }
+
+        .note{
+
+            margin-top:25px;
+
+            font-size:18px;
+
+            font-weight:bold;
+        }
+
+        .print-btn{
+
+            text-align:center;
+
+            margin-top:30px;
+        }
+
+        @media print{
+
+            body{
+                background:white;
+                padding:0;
+            }
+
+            .print-btn{
+                display:none;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="invoice">
+
+    <!-- Header -->
+
+    <div class="header">
+
+        <!-- Logo -->
+
+        <div class="logo">
+
+            <img src="{{ url_for('static', filename='images/logo.png') }}">
+
+        </div>
+
+        <!-- Agency -->
+
+        <div class="agency">
+
+            <div class="agency-top">
+
+                <p>
+                    || श्री ||
+                </p>
+
+                <p>
+                    GoGas Dealer Code: DA620
+                    <br>
+                    GSTIN: 23ACNFA4868K1ZY
+                </p>
+
+            </div>
+
+            <h1>
+                आयुषी एंटरप्राइजेज
+            </h1>
+
+            <h2>
+                204, 57 विज्ञान नगर राजेंद्र नगर, इंदौर
+            </h2>
+
+        </div>
+
+    </div>
+
+    <!-- Top Section -->
+
+    <div class="top-section">
+
+        <!-- Left -->
+
+        <div class="left">
+
+            <div class="field">
+
+                Invoice Number:
+                <span class="line">
+
+                    {{ booking.booking_no }}
+
+                </span>
+
+            </div>
+
+            <div class="field">
+
+                M/S:
+                <span class="line">
+
+                    {{ customer.customer_name }}
+
+                </span>
+
+            </div>
+
+            <div class="field">
+
+                Party GST No:
+                <span class="line">
+
+                    {{ customer.pan_no }}
+
+                </span>
+
+            </div>
+
+        </div>
+
+        <!-- Right -->
+
+        <div class="right">
+
+            <div class="field">
+
+                Date:
+                <span class="line">
+
+                    {{ current_date }}
+
+                </span>
+
+            </div>
+
+            <div class="field">
+
+                Dispatch by:
+                <span class="line">
+
+                    Office Delivery
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Table -->
+
+    <table>
+
+        <tr>
+
+            <th style="width:8%;">
+                S. No.
+            </th>
+
+            <th style="width:40%;">
+                Item Descriptions
+            </th>
+
+            <th style="width:15%;">
+                Qty (KG)
+            </th>
+
+            <th style="width:18%;">
+                Rate (per KG)
+            </th>
+
+            <th style="width:19%;">
+                Amount
+            </th>
+
+        </tr>
+
+        <!-- LPG Commercial -->
+
+        <tr style="height:70px;">
+
+            <td></td>
+
+            <td>
+
+                LPG Commercial
+                <br>
+                Gas
+
+            </td>
+
+            <td></td>
+
+            <td></td>
+
+            <td></td>
+
+        </tr>
+
+        <!-- Main Cylinder -->
+
+        <tr style="height:60px;">
+
+            <td>1</td>
+
+            <td>
+
+                LPG CYL {{ customer.cylinder_type }}
+
+            </td>
+
+            <td>
+
+                {{ booking.cylinder_qty }}
+
+            </td>
+
+            <td>
+
+                {{ rate }}
+
+            </td>
+
+            <td>
+
+                {{ total_amount }}
+
+            </td>
+
+        </tr>
+
+        <!-- 15 KG -->
+
+        <tr style="height:60px;">
+
+            <td></td>
+
+            <td>
+                LPG CYL 15
+            </td>
+
+            <td></td>
+
+            <td></td>
+
+            <td></td>
+
+        </tr>
+
+        <!-- 13.5 -->
+
+        <tr style="height:60px;">
+
+            <td></td>
+
+            <td>
+                LPG CYL 13.5
+            </td>
+
+            <td></td>
+
+            <td></td>
+
+            <td></td>
+
+        </tr>
+
+        <!-- Other Exp -->
+
+        <tr style="height:70px;">
+
+            <td></td>
+
+            <td></td>
+
+            <td colspan="2">
+
+                <strong>
+                    (1) Other Exp.
+                </strong>
+
+            </td>
+
+            <td></td>
+
+        </tr>
+
+        <tr style="height:70px;">
+
+            <td></td>
+
+            <td></td>
+
+            <td colspan="2">
+
+                <strong>
+                    (2) Other Exp.
+                </strong>
+
+            </td>
+
+            <td></td>
+
+        </tr>
+
+        <!-- Grand Total -->
+
+        <tr style="height:70px;">
+
+            <td></td>
+
+            <td></td>
+
+            <td colspan="2">
+
+                <strong>
+                    Grand Total
+                </strong>
+
+            </td>
+
+            <td>
+
+                <strong>
+
+                    {{ total_amount }}
+
+                </strong>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+    <!-- Footer -->
+
+    <div class="note">
+
+        Contact: 9109101126
+
+        <br><br>
+
+        Payment Mode: Cash / UPI / Bank
+
+    </div>
+
+    <div class="footer">
+
+        <div class="signature">
+
+            Authorised Signatory
+
+        </div>
+
+        <div class="signature">
+
+            Signature
+
+        </div>
+
+    </div>
+
+    <div class="note">
+
+        Note: Goods once sold will not be taken back.
+
+    </div>
+
+    <!-- Print -->
+
+    <div class="print-btn">
+
+        <button onclick="window.print()"
+                style="
+                padding:15px 40px;
+                background:black;
+                color:white;
+                border:none;
+                font-size:20px;
+                cursor:pointer;
+                ">
+
+            Print Invoice
+
+        </button>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

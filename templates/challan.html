@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Delivery Challan</h2>
+
+<form method="POST" class="row g-3 mb-4">
+
+    <div class="col-md-2">
+        <input type="text" name="consumer_no" placeholder="Consumer No" class="form-control">
+    </div>
+
+    <div class="col-md-2">
+        <input type="number" name="filled_qty" placeholder="Filled Qty" class="form-control">
+    </div>
+
+    <div class="col-md-2">
+        <input type="number" name="empty_qty" placeholder="Empty Qty" class="form-control">
+    </div>
+
+    <div class="col-md-2">
+        <input type="text" name="rate" placeholder="Rate" class="form-control">
+    </div>
+
+    <div class="col-md-2">
+        <select name="payment_mode" class="form-control">
+            <option>Cash</option>
+            <option>UPI</option>
+            <option>Credit</option>
+        </select>
+    </div>
+
+    <div class="col-md-2">
+        <input type="text" name="delivery_boy" placeholder="Delivery Boy" class="form-control">
+    </div>
+
+    <div class="col-md-12">
+        <button class="btn btn-success">Save Delivery</button>
+    </div>
+
+</form>
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>Consumer No</th>
+        <th>Filled Qty</th>
+        <th>Empty Qty</th>
+        <th>Amount</th>
+        <th>Payment</th>
+    </tr>
+
+    {% for delivery in deliveries %}
+    <tr>
+        <td>{{ delivery.consumer_no }}</td>
+        <td>{{ delivery.filled_qty }}</td>
+        <td>{{ delivery.empty_qty }}</td>
+        <td>{{ delivery.total_amount }}</td>
+        <td>{{ delivery.payment_mode }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}
