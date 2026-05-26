@@ -400,7 +400,7 @@
 
             <td>
 
-                {{ total_amount }}
+                ₹ {{ basic_amount }}
 
             </td>
 
@@ -446,39 +446,47 @@
 
         <tr style="height:70px;">
 
-            <td></td>
+    <td></td>
 
-            <td></td>
+    <td></td>
 
-            <td colspan="2">
+    <td colspan="2">
 
-                <strong>
-                    (1) CGST.
-                </strong>
+        <strong>
+            (1) CGST 9%
+        </strong>
 
-            </td>
+    </td>
 
-            <td></td>
+    <td>
 
-        </tr>
+        ₹ {{ cgst_amount }}
+
+    </td>
+
+</tr>
 
         <tr style="height:70px;">
 
-            <td></td>
+    <td></td>
 
-            <td></td>
+    <td></td>
 
-            <td colspan="2">
+    <td colspan="2">
 
-                <strong>
-                    (2) IGST.
-                </strong>
+        <strong>
+            (2) SGST 9%
+        </strong>
 
-            </td>
+    </td>
 
-            <td></td>
+    <td>
 
-        </tr>
+        ₹ {{ sgst_amount }}
+
+    </td>
+
+</tr>
 
         <!-- Grand Total -->
 
@@ -499,10 +507,8 @@
             <td>
 
                 <strong>
-
-                    {{ total_amount }}
-
-                </strong>
+    ₹ {{ grand_total }}
+</strong>
 
             </td>
 
