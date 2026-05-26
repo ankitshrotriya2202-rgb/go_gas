@@ -40,36 +40,70 @@ def register_routes(app):
 
 
 
-    # =========================
-    # DELIVER BOOKING
-    # =========================
+   # =========================
+# DELIVER BOOKING
+# =========================
 
-    @app.route('/deliver_booking/<int:id>', methods=['GET', 'POST'])
-    def deliver_booking(id):
+@app.route('/deliver_booking/<int:id>', methods=['GET', 'POST'])
+def deliver_booking(id):
 
-        booking = Booking.query.get_or_404(id)
+    booking = Booking.query.get_or_404(id)
 
-        if request.method == 'POST':
+    if request.method == 'POST':
 
-            booking.status = 'Delivered'
+        booking.status = 'Delivered'
 
-            booking.payment_status = 'Paid'
+        booking.payment_status = 'Paid'
 
-            booking.payment_mode = request.form['payment_mode']
+        booking.payment_mode = request.form['payment_mode']
 
-            booking.utr_no = request.form['utr_no']
+        booking.utr_no = request.form['utr_no']
 
-            db.session.commit()
 
-            return redirect('/bookings')
+        # =========================
+        # FILE UPLOAD
+        # =========================
 
-        return render_template(
+        file = request.files.get('payment_proof')
 
-            'deliver_booking.html',
+        if file and file.filename != '':
 
-            booking=booking
+            filename = secure_filename(file.filename)
 
-        )
+            upload_folder = os.path.join(
+                app.root_path,
+                'static',
+                'uploads'
+            )
+
+            os.makedirs(
+                upload_folder,
+                exist_ok=True
+            )
+
+            save_path = os.path.join(
+                upload_folder,
+                filename
+            )
+
+            file.save(save_path)
+
+            booking.payment_proof = filename
+
+            print("FILE SAVED:", filename)
+
+
+        db.session.commit()
+
+        return redirect('/bookings')
+
+    return render_template(
+
+        'deliver_booking.html',
+
+        booking=booking
+
+    )
 
 
 
