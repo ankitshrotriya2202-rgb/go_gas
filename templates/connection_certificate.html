@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="UTF-8">
@@ -142,17 +143,26 @@
 
         .field{
 
-            margin-top:28px;
+            margin-top:22px;
 
-            font-size:22px;
+            font-size:21px;
 
             font-weight:bold;
+
+            line-height:38px;
         }
 
         .line{
+
             border-bottom:1px solid black;
+
             display:inline-block;
-            width:70%;
+
+            min-height:28px;
+
+            vertical-align:middle;
+
+            padding-left:6px;
         }
 
         table{
@@ -161,7 +171,7 @@
 
             border-collapse:collapse;
 
-            margin-top:40px;
+            margin-top:35px;
         }
 
         table th,
@@ -174,6 +184,30 @@
             text-align:center;
 
             font-size:20px;
+        }
+
+        .info-table{
+
+            width:100%;
+
+            border:none;
+
+            margin-top:0;
+        }
+
+        .info-table td{
+
+            border:none;
+
+            padding:0;
+
+            text-align:left;
+
+            vertical-align:top;
+
+            font-size:21px;
+
+            font-weight:bold;
         }
 
         .signatures{
@@ -298,176 +332,246 @@
 
         </div>
 
+
         <!-- Fields -->
 
         <div class="field">
 
             Consumer Name:
-            <span class="line">
+            <span class="line" style="width:72%;">
+
                 {{ customer.customer_name }}
+
             </span>
 
         </div>
+
 
         <div class="field">
 
             Consumer Address:
-            <span class="line">
+            <span class="line" style="width:67%;">
+
                 {{ customer.address }}
+
             </span>
 
         </div>
 
-        <div class="field">
-
-    Owner Name:
-    <span class="line">
-
-        {{ customer.customer_name }}
-
-    </span>
-
-</div>
 
         <div class="field">
 
-            Mobile No.:
-            <span class="line" style="width:30%;">
-                {{ customer.mobile }}
-            </span>
+            Owner Name:
+            <span class="line" style="width:75%;">
 
-            Office Mobile No.:
-            <span class="line" style="width:25%;">
-                9109101126
+                {{ customer.customer_name }}
+
             </span>
 
         </div>
 
-        <div class="field">
 
-    <table style="width:100%; border:none;">
-
-        <tr>
-
-            <td style="
-                width:50%;
-                border:none;
-                padding:0;
-                font-size:22px;
-                font-weight:bold;
-                ">
-
-                Email:
-                <span style="
-                    border-bottom:1px solid black;
-                    display:inline-block;
-                    width:65%;
-                    font-weight:normal;
-                    ">
-
-                    {{ customer.email }}
-
-                </span>
-
-            </td>
-
-            <td style="
-                width:50%;
-                border:none;
-                padding:0;
-                font-size:22px;
-                font-weight:bold;
-                ">
-
-                Owner Mobile No.:
-                <span style="
-                    border-bottom:1px solid black;
-                    display:inline-block;
-                    width:45%;
-                    font-weight:normal;
-                    ">
-
-                    {{ customer.mobile }}
-
-                </span>
-
-            </td>
-
-        </tr>
-
-    </table>
-
-</div>
+        <!-- MOBILE -->
 
         <div class="field">
 
-    <table style="width:100%; border:none;">
+            <table class="info-table">
 
-        <tr>
+                <tr>
 
-            <td style="
-                width:60%;
-                border:none;
-                padding:0;
-                font-size:22px;
-                font-weight:bold;
-                ">
+                    <td style="width:50%;">
 
-                Proof of Address:
-                <span style="
-                    border-bottom:1px solid black;
-                    display:inline-block;
-                    width:55%;
-                    font-weight:normal;
-                    ">
+                        Mobile No.:
+                        <span class="line" style="width:58%;">
 
-                    {{ customer.id_proof }}
+                            {{ customer.mobile }}
 
-                </span>
+                        </span>
 
-            </td>
+                    </td>
 
-            <td style="
-                width:40%;
-                border:none;
-                padding:0;
-                font-size:22px;
-                font-weight:bold;
-                ">
+                    <td style="width:50%;">
 
-                PAN:
-                <span style="
-                    border-bottom:1px solid black;
-                    display:inline-block;
-                    width:55%;
-                    font-weight:normal;
-                    ">
+                        Office Mobile No.:
+                        <span class="line" style="width:45%;">
 
-                    {{ customer.pan_no }}
+                            9109101126
 
-                </span>
+                        </span>
 
-            </td>
+                    </td>
 
-        </tr>
+                </tr>
 
-    </table>
-
-</div>
-
-        <div class="field">
-
-            Receiver Name:
-            <span class="line" style="width:35%;">
-                {{ customer.receiver_name }}
-            </span>
-
-            Receiver Number:
-            <span class="line" style="width:20%;">
-                {{ customer.mobile }}
-            </span>
+            </table>
 
         </div>
+
+
+        <!-- EMAIL -->
+
+        <div class="field">
+
+            <table class="info-table">
+
+                <tr>
+
+                    <td style="width:55%;">
+
+                        Email:
+                        <span class="line" style="width:72%;">
+
+                            {{ customer.email }}
+
+                        </span>
+
+                    </td>
+
+                    <td style="width:45%;">
+
+                        Owner Mobile No.:
+                        <span class="line" style="width:48%;">
+
+                            {{ customer.mobile }}
+
+                        </span>
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <!-- PROOF -->
+
+        <div class="field">
+
+            <table class="info-table">
+
+                <tr>
+
+                    <td style="width:60%;">
+
+                        Proof of Address:
+                        <span class="line" style="width:58%;">
+
+                            {{ customer.id_proof }}
+
+                        </span>
+
+                    </td>
+
+                    <td style="width:40%;">
+
+                        PAN:
+                        <span class="line" style="width:60%;">
+
+                            {{ customer.pan_no }}
+
+                        </span>
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <!-- RECEIVER -->
+
+        <div class="field">
+
+            <table class="info-table">
+
+                <tr>
+
+                    <td style="width:55%;">
+
+                        Receiver Name:
+                        <span class="line" style="width:60%;">
+
+                            {{ customer.receiver_name }}
+
+                        </span>
+
+                    </td>
+
+                    <td style="width:45%;">
+
+                        Receiver Number:
+                        <span class="line" style="width:48%;">
+
+                            {{ customer.mobile }}
+
+                        </span>
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <!-- CONVERTOR -->
+
+        <div class="field">
+
+            <table class="info-table">
+
+                <tr>
+
+                    <td style="
+                        width:35%;
+                        padding-right:20px;
+                    ">
+
+                        Regulator / Convertor:
+
+                        <br>
+
+                        <span class="line" style="
+                            width:180px;
+                            margin-top:10px;
+                            text-align:center;
+                        ">
+
+                            {{ customer.regulator_no }}
+
+                        </span>
+
+                    </td>
+
+                    <td style="width:65%;">
+
+                        Convertor / Regulator Details:
+
+                        <br>
+
+                        <span class="line" style="
+                            width:320px;
+                            margin-top:10px;
+                            text-align:center;
+                        ">
+
+                            {{ customer.stove_details }}
+
+                        </span>
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
 
         <!-- Table -->
 
@@ -495,7 +599,7 @@
 
                 <td></td>
 
-               <td>{{ customer.cylinder_qty }}</td>
+                <td>{{ customer.cylinder_qty }}</td>
 
                 <td></td>
 
@@ -506,6 +610,7 @@
             </tr>
 
         </table>
+
 
         <!-- Sign -->
 
@@ -520,6 +625,7 @@
             </div>
 
         </div>
+
 
         <!-- Print -->
 
@@ -546,4 +652,5 @@
 </div>
 
 </body>
+
 </html>
