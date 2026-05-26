@@ -420,33 +420,38 @@ def register_routes(app):
         rate = float(booking.rate)
 
         # =========================
-        # CYLINDER WEIGHT
-        # =========================
-
-        weight = float(
-
-            booking.cylinder_type
-
-            .replace('KG', '')
-
-            .replace('kg', '')
-
-            .strip()
-
-        )
-
-        # =========================
         # TOTAL
         # =========================
 
         total_amount = (
 
-            weight *
+            float(booking.cylinder_qty)
 
-            float(booking.cylinder_qty) *
+            *
 
             float(rate)
 
+        )
+
+        # =========================
+        # GST INCLUDED CALCULATION
+        # =========================
+
+        grand_total = total_amount
+
+        basic_amount = round(
+            total_amount / 1.18,
+            2
+        )
+
+        cgst_amount = round(
+            basic_amount * 0.09,
+            2
+        )
+
+        sgst_amount = round(
+            basic_amount * 0.09,
+            2
         )
 
         return render_template(
@@ -460,6 +465,14 @@ def register_routes(app):
             rate=rate,
 
             total_amount=total_amount,
+
+            basic_amount=basic_amount,
+
+            cgst_amount=cgst_amount,
+
+            sgst_amount=sgst_amount,
+
+            grand_total=grand_total,
 
             current_date=datetime.now().strftime(
                 '%d-%m-%Y'
