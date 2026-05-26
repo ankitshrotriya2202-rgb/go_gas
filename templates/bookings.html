@@ -40,7 +40,7 @@
 
         </div>
 
-        <!-- Consumer Dropdown -->
+        <!-- Consumer -->
 
         <div class="col-md-3">
 
@@ -72,7 +72,7 @@
 
         </div>
 
-        <!-- Cylinder Type -->
+        <!-- Cylinder -->
 
         <div class="col-md-2">
 
@@ -84,24 +84,16 @@
                     class="form-control form-control-lg"
                     required>
 
-                <option value="19 KG">
-                    19 KG
+                <option value="19.2 KG">
+                    19.2 KG
                 </option>
 
                 <option value="15 KG">
                     15 KG
                 </option>
 
-                <option value="13.5 KG">
-                    13.5 KG
-                </option>
-
-                <option value="14.2 KG">
-                    14.2 KG
-                </option>
-
-                <option value="5 KG">
-                    5 KG
+                <option value="10 KG">
+                    10 KG
                 </option>
 
             </select>
@@ -113,12 +105,11 @@
         <div class="col-md-2">
 
             <label class="mb-2">
-                Cylinder Qty
+                Qty
             </label>
 
             <input type="number"
                    name="cylinder_qty"
-                   placeholder="Qty"
                    class="form-control form-control-lg"
                    required>
 
@@ -129,13 +120,12 @@
         <div class="col-md-2">
 
             <label class="mb-2">
-                Rate Per KG
+                Rate Per Cylinder
             </label>
 
             <input type="number"
                    step="0.01"
                    name="rate"
-                   placeholder="Rate"
                    class="form-control form-control-lg"
                    required>
 
@@ -186,15 +176,19 @@
 
             <th>Rate</th>
 
+            <th>Total</th>
+
             <th>Delivery</th>
 
             <th>Payment</th>
 
-			<th>UTR</th>
+            <th>UTR</th>
 
-            <th>Receipt</th>
+          <th>Receipt</th>
 
-            <th>Action</th>
+<th>Uploaded Receipt</th>
+
+<th>Action</th>
 
         </tr>
 
@@ -206,8 +200,6 @@
 
         <tr>
 
-            <!-- Booking -->
-
             <td>
 
                 <strong>
@@ -218,15 +210,11 @@
 
             </td>
 
-            <!-- Consumer -->
-
             <td>
 
                 {{ booking.consumer_no }}
 
             </td>
-
-            <!-- Cylinder -->
 
             <td>
 
@@ -234,19 +222,25 @@
 
             </td>
 
-            <!-- Qty -->
-
             <td>
 
                 {{ booking.cylinder_qty }}
 
             </td>
 
-            <!-- Rate -->
-
             <td>
 
                 ₹ {{ booking.rate }}
+
+            </td>
+
+            <td>
+
+                ₹ {{
+                    booking.cylinder_qty|float
+                    *
+                    booking.rate|float
+                }}
 
             </td>
 
@@ -276,36 +270,36 @@
 
             <!-- Payment -->
 
-<td>
+            <td>
 
-    {% if booking.payment_status == 'Paid' %}
+                {% if booking.payment_status == 'Paid' %}
 
-        <span class="badge bg-success">
+                    <span class="badge bg-success">
 
-            {{ booking.payment_mode }}
+                        {{ booking.payment_mode }}
 
-        </span>
+                    </span>
 
-    {% else %}
+                {% else %}
 
-        <span class="badge bg-danger">
+                    <span class="badge bg-danger">
 
-            Pending
+                        Pending
 
-        </span>
+                    </span>
 
-    {% endif %}
+                {% endif %}
 
-</td>
+            </td>
 
+            <!-- UTR -->
 
-<!-- UTR -->
+            <td>
 
-<td>
+                {{ booking.utr_no or '-' }}
 
-    {{ booking.utr_no or '-' }}
+            </td>
 
-</td>
             <!-- Receipt -->
 
             <td>
@@ -322,30 +316,58 @@
 
             </td>
 
-            <!-- Action -->
+            <!-- Uploaded Receipt -->
 
-            <td>
+<td>
 
-                {% if booking.status != 'Delivered' %}
+    {% if booking.payment_proof %}
 
-                <a href="/deliver_booking/{{ booking.id }}"
-                   class="btn btn-success btn-sm">
+        <a href="{{ url_for(
+            'static',
+            filename='uploads/' + booking.payment_proof
+        ) }}"
+           target="_blank"
+           class="btn btn-info btn-sm">
 
-                    Deliver
+            <i class="fa-solid fa-file"></i>
 
-                </a>
+            View
 
-                {% else %}
+        </a>
 
-                <button class="btn btn-secondary btn-sm">
+    {% else %}
 
-                    Completed
+        -
 
-                </button>
+    {% endif %}
 
-                {% endif %}
+</td>
 
-            </td>
+
+<!-- Action -->
+
+<td>
+
+    {% if booking.status != 'Delivered' %}
+
+    <a href="/deliver_booking/{{ booking.id }}"
+       class="btn btn-success btn-sm">
+
+        Deliver
+
+    </a>
+
+    {% else %}
+
+    <button class="btn btn-secondary btn-sm">
+
+        Completed
+
+    </button>
+
+    {% endif %}
+
+</td>
 
         </tr>
 
