@@ -67,6 +67,8 @@ class Booking(db.Model):
     payment_mode = db.Column(db.String(50))
 
     utr_no = db.Column(db.String(100))
+    
+    payment_proof = db.Column(db.String(255))
 
 
 class Delivery(db.Model):
