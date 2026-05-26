@@ -6,15 +6,30 @@
 
     <div class="table-box p-4">
 
-        <h2 class="mb-4">
-            Deliver Booking
-        </h2>
+        <div class="d-flex justify-content-between align-items-center mb-4">
 
-        <form method="POST">
+            <div>
+
+                <h2 style="font-weight:700;">
+                    Deliver Booking
+                </h2>
+
+                <p class="text-muted mb-0">
+                    Complete payment & upload proof
+                </p>
+
+            </div>
+
+        </div>
+
+        <form method="POST"
+              enctype="multipart/form-data">
+
+            <!-- Payment Mode -->
 
             <div class="mb-4">
 
-                <label class="mb-2">
+                <label class="mb-2 fw-bold">
                     Payment Mode
                 </label>
 
@@ -42,9 +57,12 @@
 
             </div>
 
+
+            <!-- UTR -->
+
             <div class="mb-4">
 
-                <label class="mb-2">
+                <label class="mb-2 fw-bold">
                     UTR Number
                 </label>
 
@@ -55,7 +73,36 @@
 
             </div>
 
-            <button class="btn btn-success btn-lg">
+
+            <!-- Upload -->
+
+            <div class="mb-4">
+
+                <label class="mb-2 fw-bold">
+                    Upload Receipt
+                </label>
+
+                <input type="file"
+                       name="payment_proof"
+                       accept=".jpg,.jpeg,.png,.pdf"
+                       class="form-control form-control-lg">
+
+                <small class="text-muted">
+
+                    Allowed:
+                    JPG,
+                    JPEG,
+                    PNG,
+                    PDF
+
+                </small>
+
+            </div>
+
+
+            <!-- Submit -->
+
+            <button class="btn btn-success btn-lg px-5">
 
                 Complete Delivery
 
