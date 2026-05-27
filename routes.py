@@ -171,7 +171,11 @@ def register_routes(app):
 
                 cylinder_qty=request.form['cylinder_qty'],
 
-                security_deposit=request.form['security_deposit']
+                security_deposit=request.form['security_deposit'],
+                
+                remarks=request.form['remarks'],
+                
+                bill_type=request.form['bill_type'],
 
             )
 
