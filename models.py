@@ -40,6 +40,10 @@ class Customer(db.Model):
     receiver_name = db.Column(db.String(255))
 
     cylinder_qty = db.Column(db.Integer)
+    
+    remarks = db.Column(db.Text)
+    
+    bill_type = db.Column(db.String(100))
 
 
 class Booking(db.Model):
