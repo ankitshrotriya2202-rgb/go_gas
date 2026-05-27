@@ -180,11 +180,14 @@
             <select name="cylinder_type"
                     class="form-control form-control-lg">
 
+				
+				<option>19.2 KG</option>
+
                 <option>14.2 KG</option>
 
-                <option>19 KG</option>
-
-                <option>5 KG</option>
+                <option>10 KG</option>
+				
+				
 
             </select>
 
@@ -269,7 +272,7 @@
         <div class="col-md-6 mb-3">
 
             <label class="mb-2">
-                Pipe Issue Date
+                Connection Issue Date
             </label>
 
             <input type="date"
@@ -277,6 +280,57 @@
                    class="form-control form-control-lg">
 
         </div>
+		
+		
+		<!-- Remarks -->
+
+<div class="col-md-12 mb-3">
+
+    <label class="mb-2">
+        Remarks
+    </label>
+
+    <textarea
+            name="remarks"
+            class="form-control form-control-lg"
+            rows="3"></textarea>
+
+</div>
+
+<!-- Bill Type -->
+
+<div class="col-md-4 mb-3">
+
+    <label class="mb-2">
+        Bill Type
+    </label>
+
+    <select name="bill_type"
+            class="form-control form-control-lg">
+
+        <option value="Bill To Bill">
+            Bill To Bill
+        </option>
+		
+		<option value="Cash">
+            Cash
+        </option>
+		
+		<option value="Bank Tranfer">
+            Bank Tranfer
+        </option>
+		
+		<option value="Cheque">
+            Cheque
+        </option>
+		
+		<option value="UPI">
+            UPI
+        </option>
+
+    </select>
+
+</div>
 		
 		<!-- Security Deposit -->
 
