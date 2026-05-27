@@ -11,7 +11,7 @@
 
         body{
             font-family:"Times New Roman";
-            background:white;
+            background:#f5f5f5;
             padding:20px;
         }
 
@@ -21,31 +21,35 @@
 
             margin:auto;
 
-            border:1px solid #111;
+            background:white;
 
-            padding:20px;
+            border:2px solid #111;
+
+            padding:25px;
 
             position:relative;
 
             overflow:hidden;
+
+            box-shadow:0 0 10px rgba(0,0,0,0.1);
         }
 
         .watermark{
 
             position:absolute;
 
-            top:180px;
+            top:170px;
 
-            left:120px;
+            left:130px;
 
-            opacity:0.08;
+            opacity:0.06;
 
             z-index:0;
         }
 
         .watermark img{
 
-            width:600px;
+            width:580px;
         }
 
         .content{
@@ -53,23 +57,26 @@
             z-index:2;
         }
 
+        /* HEADER */
+
         .header{
 
             display:flex;
 
             align-items:flex-start;
 
-            border-bottom:2px solid #1e40af;
+            border-bottom:3px solid #1e40af;
 
-            padding-bottom:10px;
+            padding-bottom:15px;
         }
 
         .logo img{
-            width:140px;
+            width:130px;
         }
 
         .company{
             margin-left:20px;
+            flex:1;
         }
 
         .company h1{
@@ -78,29 +85,39 @@
 
             color:#1e3a8a;
 
-            font-size:42px;
+            font-size:36px;
 
             font-weight:800;
+
+            letter-spacing:1px;
+
+            line-height:42px;
         }
 
         .company p{
 
-            margin:3px 0;
+            margin:4px 0;
 
-            font-size:20px;
+            font-size:17px;
 
-            font-weight:bold;
+            font-weight:600;
+
+            line-height:24px;
         }
+
+        /* TOP */
 
         .top-box{
 
-            margin-top:20px;
+            margin-top:28px;
 
             display:flex;
 
             justify-content:space-between;
 
             align-items:center;
+
+            gap:20px;
         }
 
         .consumer-box{
@@ -117,6 +134,8 @@
             border-bottom:1px solid #111;
 
             font-weight:bold;
+
+            text-align:center;
         }
 
         .consumer-box div:last-child{
@@ -129,61 +148,48 @@
 
             color:white;
 
-            padding:10px 30px;
+            padding:12px 35px;
 
-            font-size:28px;
+            font-size:26px;
 
-            font-weight:bold;
+            font-weight:700;
+
+            border-radius:6px;
+
+            letter-spacing:1px;
         }
 
         .date{
-            font-size:22px;
+            font-size:20px;
             font-weight:bold;
         }
 
+        /* FIELDS */
+
         .field{
 
-            margin-top:22px;
+            margin-top:18px;
 
-            font-size:21px;
+            font-size:19px;
 
-            font-weight:bold;
+            font-weight:700;
 
-            line-height:38px;
+            line-height:34px;
         }
 
         .line{
 
-            border-bottom:1px solid black;
+            border-bottom:1px solid #111;
 
             display:inline-block;
 
-            min-height:28px;
+            min-height:26px;
 
             vertical-align:middle;
 
-            padding-left:6px;
-        }
+            padding-left:8px;
 
-        table{
-
-            width:100%;
-
-            border-collapse:collapse;
-
-            margin-top:35px;
-        }
-
-        table th,
-        table td{
-
-            border:1px solid #111;
-
-            padding:12px;
-
-            text-align:center;
-
-            font-size:20px;
+            padding-bottom:2px;
         }
 
         .info-table{
@@ -205,10 +211,42 @@
 
             vertical-align:top;
 
-            font-size:21px;
+            font-size:19px;
 
-            font-weight:bold;
+            font-weight:700;
         }
+
+        /* MAIN TABLE */
+
+        table{
+
+            width:100%;
+
+            border-collapse:collapse;
+
+            margin-top:35px;
+        }
+
+        table th,
+        table td{
+
+            border:1px solid #111;
+
+            padding:10px;
+
+            text-align:center;
+
+            font-size:18px;
+        }
+
+        table th{
+
+            background:#f3f4f6;
+
+            font-weight:800;
+        }
+
+        /* SIGNATURE */
 
         .signatures{
 
@@ -216,12 +254,14 @@
 
             justify-content:space-between;
 
-            margin-top:70px;
+            margin-top:90px;
 
-            font-size:22px;
+            font-size:20px;
 
-            font-weight:bold;
+            font-weight:700;
         }
+
+        /* PRINT */
 
         .print-btn{
 
@@ -237,7 +277,12 @@
             }
 
             body{
+                background:white;
                 padding:0;
+            }
+
+            .voucher{
+                box-shadow:none;
             }
 
         }
@@ -250,7 +295,7 @@
 
 <div class="voucher">
 
-    <!-- Watermark -->
+    <!-- WATERMARK -->
 
     <div class="watermark">
 
@@ -260,7 +305,7 @@
 
     <div class="content">
 
-        <!-- Header -->
+        <!-- HEADER -->
 
         <div class="header">
 
@@ -272,7 +317,9 @@
 
             <div class="company">
 
-                <h1>CONFIDENCE PETROLEUM INDIA LTD</h1>
+                <h1>
+                    CONFIDENCE PETROLEUM INDIA LTD
+                </h1>
 
                 <p>
                     Authorised Dealer:
@@ -301,7 +348,7 @@
 
         </div>
 
-        <!-- Top -->
+        <!-- TOP -->
 
         <div class="top-box">
 
@@ -332,8 +379,7 @@
 
         </div>
 
-
-        <!-- Fields -->
+        <!-- FIELDS -->
 
         <div class="field">
 
@@ -346,7 +392,6 @@
 
         </div>
 
-
         <div class="field">
 
             Consumer Address:
@@ -358,7 +403,6 @@
 
         </div>
 
-
         <div class="field">
 
             Owner Name:
@@ -369,7 +413,6 @@
             </span>
 
         </div>
-
 
         <!-- MOBILE -->
 
@@ -407,7 +450,6 @@
 
         </div>
 
-
         <!-- EMAIL -->
 
         <div class="field">
@@ -443,7 +485,6 @@
             </table>
 
         </div>
-
 
         <!-- PROOF -->
 
@@ -481,7 +522,6 @@
 
         </div>
 
-
         <!-- RECEIVER -->
 
         <div class="field">
@@ -517,7 +557,6 @@
             </table>
 
         </div>
-
 
         <!-- CONVERTOR -->
 
@@ -571,56 +610,57 @@
             </table>
 
         </div>
-		
-		<!-- Remarks -->
 
-<div class="field">
+        <!-- REMARKS -->
 
-    Remarks:
-    <span class="line" style="width:82%;">
+        <div class="field">
 
-        {{ customer.remarks }}
+            Remarks:
+            <span class="line" style="width:82%;">
 
-    </span>
+                {{ customer.remarks }}
 
-</div>
+            </span>
 
-<div class="field">
+        </div>
 
-    <table class="info-table">
+        <!-- SECURITY -->
 
-        <tr>
+        <div class="field">
 
-            <td style="width:50%;">
+            <table class="info-table">
 
-                Security Deposit:
-                <span class="line" style="width:52%;">
+                <tr>
 
-                    ₹ {{ customer.security_deposit }}
+                    <td style="width:50%;">
 
-                </span>
+                        Security Deposit:
+                        <span class="line" style="width:52%;">
 
-            </td>
+                            ₹ {{ customer.security_deposit }}
 
-            <td style="width:50%;">
+                        </span>
 
-                Bill Type:
-                <span class="line" style="width:55%;">
+                    </td>
 
-                    {{ customer.bill_type }}
+                    <td style="width:50%;">
 
-                </span>
+                        Bill Type:
+                        <span class="line" style="width:55%;">
 
-            </td>
+                            {{ customer.bill_type }}
 
-        </tr>
+                        </span>
 
-    </table>
+                    </td>
 
-</div>
+                </tr>
 
+            </table>
 
-        <!-- Table -->
+        </div>
+
+        <!-- MAIN TABLE -->
 
         <table>
 
@@ -642,11 +682,19 @@
 
             <tr style="height:180px;">
 
-                <td>{{ customer.cylinder_type }}</td>
+                <td>
+
+                    {{ customer.cylinder_type }}
+
+                </td>
 
                 <td></td>
 
-                <td>{{ customer.cylinder_qty }}</td>
+                <td>
+
+                    {{ customer.cylinder_qty }}
+
+                </td>
 
                 <td></td>
 
@@ -658,23 +706,39 @@
 
         </table>
 
-
-        <!-- Sign -->
+        <!-- SIGNATURE -->
 
         <div class="signatures">
 
-            <div>
-                Customer Signature
+            <div style="text-align:center; width:40%;">
+
+                <div style="
+                    border-top:1px solid black;
+                    padding-top:10px;
+                ">
+
+                    Customer Signature
+
+                </div>
+
             </div>
 
-            <div>
-                Receiver Signature
+            <div style="text-align:center; width:40%;">
+
+                <div style="
+                    border-top:1px solid black;
+                    padding-top:10px;
+                ">
+
+                    Receiver Signature
+
+                </div>
+
             </div>
 
         </div>
 
-
-        <!-- Print -->
+        <!-- PRINT -->
 
         <div class="print-btn">
 
@@ -684,6 +748,7 @@
                     background:black;
                     color:white;
                     border:none;
+                    border-radius:6px;
                     font-size:20px;
                     cursor:pointer;
                     ">
