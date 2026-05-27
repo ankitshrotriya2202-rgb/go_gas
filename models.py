@@ -73,6 +73,12 @@ class Booking(db.Model):
     utr_no = db.Column(db.String(100))
     
     payment_proof = db.Column(db.String(255))
+    
+    remarks = db.Column(db.Text)
+    
+    delivery_remarks = db.Column(db.Text)
+    
+    delivery_remarks = db.Column(db.Text)
 
 
 class Delivery(db.Model):
