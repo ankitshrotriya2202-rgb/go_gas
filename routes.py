@@ -58,6 +58,10 @@ def register_routes(app):
             booking.payment_mode = request.form['payment_mode']
 
             booking.utr_no = request.form['utr_no']
+            
+            booking.delivery_remarks = request.form[
+                'delivery_remarks'
+            ]
 
 
             # =========================
@@ -250,6 +254,8 @@ def register_routes(app):
                 rate=request.form[
                     'rate'
                 ],
+                
+                remarks=request.form['remarks'],
 
                 status='Pending',
 
