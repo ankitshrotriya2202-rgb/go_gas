@@ -133,15 +133,32 @@
 
         <!-- Button -->
 
-        <div class="col-md-12">
+       <!-- Remarks -->
 
-            <button class="btn btn-primary btn-lg px-5">
+<div class="col-md-6">
 
-                Create Booking
+    <label class="mb-2">
+        Remarks
+    </label>
 
-            </button>
+    <input type="text"
+           name="remarks"
+           class="form-control form-control-lg"
+           placeholder="Enter Remarks">
 
-        </div>
+</div>
+
+<!-- Button -->
+
+<div class="col-md-12">
+
+    <button class="btn btn-primary btn-lg px-5">
+
+        Create Booking
+
+    </button>
+
+</div>
 
     </form>
 
@@ -177,6 +194,10 @@
             <th>Rate</th>
 
             <th>Total</th>
+			
+			<th>Remarks</th>
+			
+			<th>Delivery Remarks</th>
 
             <th>Delivery</th>
 
@@ -243,6 +264,20 @@
                 }}
 
             </td>
+			
+			
+			<td>
+
+    {{ booking.remarks or '-' }}
+
+</td>
+
+
+<td>
+
+    {{ booking.delivery_remarks or '-' }}
+
+</td>
 
             <!-- Delivery -->
 
