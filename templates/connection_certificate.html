@@ -571,6 +571,53 @@
             </table>
 
         </div>
+		
+		<!-- Remarks -->
+
+<div class="field">
+
+    Remarks:
+    <span class="line" style="width:82%;">
+
+        {{ customer.remarks }}
+
+    </span>
+
+</div>
+
+<div class="field">
+
+    <table class="info-table">
+
+        <tr>
+
+            <td style="width:50%;">
+
+                Security Deposit:
+                <span class="line" style="width:52%;">
+
+                    ₹ {{ customer.security_deposit }}
+
+                </span>
+
+            </td>
+
+            <td style="width:50%;">
+
+                Bill Type:
+                <span class="line" style="width:55%;">
+
+                    {{ customer.bill_type }}
+
+                </span>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+</div>
 
 
         <!-- Table -->
