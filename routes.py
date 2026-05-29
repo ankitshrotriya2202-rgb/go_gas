@@ -152,6 +152,8 @@ def register_routes(app):
                 father_name=request.form['father_name'],
 
                 mobile=request.form['mobile'],
+                
+                office_mobile=request.form['office_mobile'],
 
                 address=request.form['address'],
 
@@ -171,7 +173,7 @@ def register_routes(app):
 
                 pan_no=request.form['pan_no'],
 
-                receiver_name=request.form['receiver_name'],
+                
 
                 cylinder_qty=request.form['cylinder_qty'],
 
@@ -180,6 +182,14 @@ def register_routes(app):
                 remarks=request.form['remarks'],
                 
                 bill_type=request.form['bill_type'],
+                
+                regulator_qty=request.form['regulator_qty'],
+
+                connector_qty=request.form['connector_qty'],
+                
+                rate=request.form['rate'],
+
+                payment_type=request.form['payment_type'],
 
             )
 
