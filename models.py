@@ -29,7 +29,7 @@ class Customer(db.Model):
 
     regulator_no = db.Column(db.String(255))
 
-    
+    stove_details = db.Column(db.String(255))
 
     pipe_issue_date = db.Column(db.String(255))
 
@@ -87,10 +87,13 @@ class Booking(db.Model):
     payment_proof = db.Column(db.String(255))
     
     remarks = db.Column(db.Text)
-    
+
     delivery_remarks = db.Column(db.Text)
-    
-    delivery_remarks = db.Column(db.Text)
+
+    active_status = db.Column(
+        db.Boolean,
+        default=True
+    )
 
 
 class Delivery(db.Model):
