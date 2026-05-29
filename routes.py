@@ -70,33 +70,19 @@ def register_routes(app):
 
             file = request.files.get('payment_proof')
 
-            if file and file.filename:
-            
+            if file and file.filename != '':
+
                 filename = secure_filename(file.filename)
-            
-                upload_folder = os.path.join(
-                    app.root_path,
-                    'static',
-                    'uploads'
-                )
-            
-                os.makedirs(upload_folder, exist_ok=True)
-            
+
                 upload_path = os.path.join(
-                    upload_folder,
+                    'static/uploads',
                     filename
                 )
-            
-                print("Saving to:", upload_path)
-            
+
                 file.save(upload_path)
-            
-                print(
-                    "Saved:",
-                    os.path.exists(upload_path)
-                )
-            
+
                 booking.payment_proof = filename
+
 
             db.session.commit()
 
@@ -514,4 +500,52 @@ def register_routes(app):
                 '%d-%m-%Y'
             )
 
+        )
+        
+        
+    @app.route('/edit_customer/<int:id>', methods=['GET', 'POST'])
+    def edit_customer(id):
+
+        customer = Customer.query.get_or_404(id)
+
+        if request.method == 'POST':
+
+            customer.customer_name = request.form['customer_name']
+            customer.father_name = request.form['father_name']
+            customer.mobile = request.form['mobile']
+            customer.office_mobile = request.form['office_mobile']
+
+            customer.address = request.form['address']
+
+            customer.email = request.form['email']
+            customer.id_proof = request.form['id_proof']
+            customer.pan_no = request.form['pan_no']
+
+            customer.connection_type = request.form['connection_type']
+            customer.cylinder_type = request.form['cylinder_type']
+            customer.cylinder_qty = request.form['cylinder_qty']
+
+            customer.regulator_qty = request.form['regulator_qty']
+            customer.connector_qty = request.form['connector_qty']
+
+            customer.rate = request.form['rate']
+            customer.payment_amount = request.form['payment_amount']
+
+            customer.security_deposit = request.form['security_deposit']
+
+            customer.regulator_no = request.form['regulator_no']
+
+            customer.pipe_issue_date = request.form['pipe_issue_date']
+
+            customer.bill_type = request.form['bill_type']
+
+            customer.remarks = request.form['remarks']
+
+            db.session.commit()
+
+            return redirect('/customers')
+
+        return render_template(
+            'edit_customer.html',
+            customer=customer
         )
