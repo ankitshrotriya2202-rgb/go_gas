@@ -385,22 +385,32 @@
 
     {% if booking.status != 'Delivered' %}
 
-    <a href="/deliver_booking/{{ booking.id }}"
-       class="btn btn-success btn-sm">
+        <a href="/deliver_booking/{{ booking.id }}"
+           class="btn btn-success btn-sm">
 
-        Deliver
+            Deliver
 
-    </a>
+        </a>
 
     {% else %}
 
-    <button class="btn btn-secondary btn-sm">
+        <button class="btn btn-secondary btn-sm">
 
-        Completed
+            Completed
 
-    </button>
+        </button>
 
     {% endif %}
+
+    <a href="/delete_booking/{{ booking.id }}"
+       class="btn btn-danger btn-sm mt-1"
+       onclick="return confirm(
+       'Delete this booking?'
+       );">
+
+        Delete
+
+    </a>
 
 </td>
 
