@@ -383,7 +383,7 @@
 
         <div class="field">
 
-            Consumer Name:
+            Busniness Name:
             <span class="line" style="width:72%;">
 
                 {{ customer.customer_name }}
@@ -408,7 +408,7 @@
             Owner Name:
             <span class="line" style="width:75%;">
 
-                {{ customer.customer_name }}
+                {{ customer.father_name }}
 
             </span>
 
@@ -438,7 +438,7 @@
                         Office Mobile No.:
                         <span class="line" style="width:45%;">
 
-                            9109101126
+                             {{ customer.office_mobile }}
 
                         </span>
 
@@ -522,94 +522,144 @@
 
         </div>
 
-        <!-- RECEIVER -->
+       <!-- REGULATOR / CONNECTOR -->
 
-        <div class="field">
+<div class="field">
 
-            <table class="info-table">
+    <table class="info-table">
 
-                <tr>
+        <tr>
 
-                    <td style="width:55%;">
+            <td style="width:25%;">
 
-                        Receiver Name:
-                        <span class="line" style="width:60%;">
+                Regulator Qty:
 
-                            {{ customer.receiver_name }}
+                <br>
 
-                        </span>
+                <span class="line" style="width:90px;">
 
-                    </td>
+                    {{ customer.regulator_qty }}
 
-                    <td style="width:45%;">
+                </span>
 
-                        Receiver Number:
-                        <span class="line" style="width:48%;">
+            </td>
 
-                            {{ customer.mobile }}
+            <td style="width:25%;">
 
-                        </span>
+                Connector Qty:
 
-                    </td>
+                <br>
 
-                </tr>
+                <span class="line" style="width:90px;">
 
-            </table>
+                    {{ customer.connector_qty }}
 
-        </div>
+                </span>
 
-        <!-- CONVERTOR -->
+            </td>
 
-        <div class="field">
+            <td style="width:25%;">
 
-            <table class="info-table">
+                Regulator Amount:
 
-                <tr>
+                <br>
 
-                    <td style="
-                        width:35%;
-                        padding-right:20px;
-                    ">
+                <span class="line" style="width:140px;">
 
-                        Regulator / Convertor:
+                    ₹ {{ customer.regulator_qty * 300 }}
 
-                        <br>
+                </span>
 
-                        <span class="line" style="
-                            width:180px;
-                            margin-top:10px;
-                            text-align:center;
-                        ">
+            </td>
 
-                            {{ customer.regulator_no }}
+            <td style="width:25%;">
 
-                        </span>
+                Connector Amount:
 
-                    </td>
+                <br>
 
-                    <td style="width:65%;">
+                <span class="line" style="width:140px;">
 
-                        Convertor / Regulator Details:
+                    ₹ {{ customer.connector_qty * 300 }}
 
-                        <br>
+                </span>
 
-                        <span class="line" style="
-                            width:320px;
-                            margin-top:10px;
-                            text-align:center;
-                        ">
+            </td>
 
-                            {{ customer.stove_details }}
+        </tr>
 
-                        </span>
+    </table>
 
-                    </td>
+</div>
+        <!-- REGULATOR / CONNECTOR -->
 
-                </tr>
+<div class="field">
 
-            </table>
+    <table class="info-table">
 
-        </div>
+        <tr>
+
+            <td style="width:25%; padding-left:10px;">
+
+                Regulator Qty
+
+                <br>
+
+                <span class="line" style="width:90px;">
+
+                    {{ customer.regulator_qty }}
+
+                </span>
+
+            </td>
+
+            <td style="width:25%; padding-left:10px;">
+
+                Connector Qty
+
+                <br>
+
+                <span class="line" style="width:90px;">
+
+                    {{ customer.connector_qty }}
+
+                </span>
+
+            </td>
+
+            <td style="width:25%; padding-left:10px;">
+
+                Regulator Amount
+
+                <br>
+
+                <span class="line" style="width:140px;">
+
+                    ₹ {{ customer.regulator_qty * 300 }}
+
+                </span>
+
+            </td>
+
+            <td style="width:25%; padding-left:10px;">
+
+                Connector Amount
+
+                <br>
+
+                <span class="line" style="width:140px;">
+
+                    ₹ {{ customer.connector_qty * 300 }}
+
+                </span>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+</div>
 
         <!-- REMARKS -->
 
@@ -667,42 +717,46 @@
             <tr>
 
                 <th>CYLINDER SIZE</th>
-
-                <th>RATE</th>
-
-                <th>QUANTITY</th>
-
-                <th>AMOUNT</th>
-
-                <th>CASH</th>
-
-                <th>CHEQUE</th>
+				<th>RATE</th>
+				<th>QUANTITY</th>
+				<th>AMOUNT</th>
+				<th>PAYMENT TYPE</th>
 
             </tr>
 
             <tr style="height:180px;">
 
-                <td>
+    <td>
 
-                    {{ customer.cylinder_type }}
+        {{ customer.cylinder_type }}
 
-                </td>
+    </td>
 
-                <td></td>
+    <td>
 
-                <td>
+        ₹ {{ customer.rate }}
 
-                    {{ customer.cylinder_qty }}
+    </td>
 
-                </td>
+    <td>
 
-                <td></td>
+        {{ customer.cylinder_qty }}
 
-                <td></td>
+    </td>
 
-                <td></td>
+    <td>
 
-            </tr>
+        ₹ {{ (customer.rate|float) * (customer.cylinder_qty|int) }}
+
+    </td>
+
+    <td>
+
+        {{ customer.payment_type }}
+
+    </td>
+
+</tr>
 
         </table>
 
