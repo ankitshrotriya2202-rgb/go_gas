@@ -287,7 +287,11 @@ def register_routes(app):
         # SHOW BOOKINGS
         # =========================
 
-        booking_list = Booking.query.order_by(
+        # SHOW BOOKINGS
+
+        booking_list = Booking.query.filter_by(
+            active_status=True
+        ).order_by(
             desc(Booking.id)
         ).all()
 
@@ -549,3 +553,16 @@ def register_routes(app):
             'edit_customer.html',
             customer=customer
         )
+        
+        
+        
+    @app.route('/delete_booking/<int:id>')
+    def delete_booking(id):
+
+        booking = Booking.query.get_or_404(id)
+
+        booking.active_status = False
+
+        db.session.commit()
+
+        return redirect('/bookings')
