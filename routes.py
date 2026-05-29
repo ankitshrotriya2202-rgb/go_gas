@@ -74,10 +74,31 @@ def register_routes(app):
 
                 filename = secure_filename(file.filename)
 
-                upload_path = os.path.join(
-                    'static/uploads',
-                    filename
-                )
+                file = request.files.get('payment_proof')
+
+                if file and file.filename != '':
+                
+                    filename = secure_filename(file.filename)
+                
+                    upload_folder = os.path.join(
+                        app.root_path,
+                        'static',
+                        'uploads'
+                    )
+                
+                    os.makedirs(
+                        upload_folder,
+                        exist_ok=True
+                    )
+                
+                    upload_path = os.path.join(
+                        upload_folder,
+                        filename
+                    )
+                
+                    file.save(upload_path)
+                
+                    booking.payment_proof = filename
 
                 file.save(upload_path)
 
