@@ -1,0 +1,236 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 style="font-weight:700;">
+            Edit LPG Customer
+        </h2>
+        <p class="text-muted">
+            Update LPG customer details
+        </p>
+    </div>
+</div>
+
+<div class="table-box">
+<form method="POST">
+    <div class="row">
+
+        <div class="col-md-4 mb-3">
+            <label class="mb-2">Consumer Number</label>
+            <input type="text"
+                   value="{{ customer.consumer_no }}"
+                   class="form-control form-control-lg"
+                   readonly>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label class="mb-2">Business Name</label>
+            <input type="text"
+                   name="customer_name"
+                   value="{{ customer.customer_name }}"
+                   class="form-control form-control-lg"
+                   required>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label class="mb-2">Owner Name</label>
+            <input type="text"
+                   name="father_name"
+                   value="{{ customer.father_name }}"
+                   class="form-control form-control-lg">
+        </div>
+
+        <div class="col-md-12 mb-3">
+            <label class="mb-2">Business Address</label>
+            <textarea name="address"
+                      class="form-control form-control-lg"
+                      rows="3">{{ customer.address }}</textarea>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label class="mb-2">Mobile Number</label>
+            <input type="text" name="mobile"
+                   value="{{ customer.mobile }}"
+                   class="form-control form-control-lg">
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label class="mb-2">Office Mobile Number</label>
+            <input type="text" name="office_mobile"
+                   value="{{ customer.office_mobile }}"
+                   class="form-control form-control-lg">
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label class="mb-2">Email</label>
+            <input type="email" name="email"
+                   value="{{ customer.email }}"
+                   class="form-control form-control-lg">
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label class="mb-2">Proof of Address</label>
+            <input type="text" name="id_proof"
+                   value="{{ customer.id_proof }}"
+                   class="form-control form-control-lg">
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label class="mb-2">PAN Number</label>
+            <input type="text" name="pan_no"
+                   value="{{ customer.pan_no }}"
+                   class="form-control form-control-lg">
+        </div>
+
+        <div class="col-md-3 mb-3">
+
+    <label class="mb-2">
+        Regulator Qty
+    </label>
+
+    <select name="regulator_qty"
+            class="form-control form-control-lg">
+
+        {% for i in range(11) %}
+        <option value="{{ i }}"
+            {% if customer.regulator_qty == i %}
+            selected
+            {% endif %}>
+            {{ i }}
+        </option>
+        {% endfor %}
+
+    </select>
+
+</div>
+
+      <div class="col-md-3 mb-3">
+
+    <label class="mb-2">
+        Connector Qty
+    </label>
+
+    <select name="connector_qty"
+            class="form-control form-control-lg">
+
+        {% for i in range(11) %}
+        <option value="{{ i }}"
+            {% if customer.connector_qty == i %}
+            selected
+            {% endif %}>
+            {{ i }}
+        </option>
+        {% endfor %}
+
+    </select>
+
+</div>
+        <div class="col-md-3 mb-3">
+
+    <label class="mb-2">
+        Cylinder Size
+    </label>
+
+    <select name="cylinder_type"
+            class="form-control form-control-lg">
+
+        <option value="19.2 KG"
+            {% if customer.cylinder_type == '19.2 KG' %}
+            selected
+            {% endif %}>
+            19.2 KG
+        </option>
+
+        <option value="15 KG"
+            {% if customer.cylinder_type == '15 KG' %}
+            selected
+            {% endif %}>
+            15 KG
+        </option>
+
+        <option value="10 KG"
+            {% if customer.cylinder_type == '10 KG' %}
+            selected
+            {% endif %}>
+            10 KG
+        </option>
+
+    </select>
+
+</div>
+
+        <div class="col-md-3 mb-3">
+            <label class="mb-2">Quantity</label>
+            <input type="number" name="cylinder_qty"
+                   value="{{ customer.cylinder_qty }}"
+                   class="form-control form-control-lg">
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <label class="mb-2">Rate</label>
+            <input type="number" step="0.01" name="rate"
+                   value="{{ customer.rate }}"
+                   class="form-control form-control-lg">
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <label class="mb-2">Connection Type</label>
+            <input type="text" name="connection_type"
+                   value="{{ customer.connection_type }}"
+                   class="form-control form-control-lg">
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <label class="mb-2">Received Amount</label>
+            <input type="number" step="0.01" name="payment_amount"
+                   value="{{ customer.payment_amount }}"
+                   class="form-control form-control-lg">
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <label class="mb-2">Regulator / Convertor</label>
+            <input type="text" name="regulator_no"
+                   value="{{ customer.regulator_no }}"
+                   class="form-control form-control-lg">
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label class="mb-2">Connection Issue Date</label>
+            <input type="date" name="pipe_issue_date"
+                   value="{{ customer.pipe_issue_date }}"
+                   class="form-control form-control-lg">
+        </div>
+
+        <div class="col-md-12 mb-3">
+            <label class="mb-2">Remarks</label>
+            <textarea name="remarks"
+                      class="form-control form-control-lg"
+                      rows="3">{{ customer.remarks }}</textarea>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label class="mb-2">Bill Type</label>
+            <input type="text" name="bill_type"
+                   value="{{ customer.bill_type }}"
+                   class="form-control form-control-lg">
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label class="mb-2">Security Deposit</label>
+            <input type="text" name="security_deposit"
+                   value="{{ customer.security_deposit }}"
+                   class="form-control form-control-lg">
+        </div>
+
+    </div>
+
+    <button class="btn btn-warning btn-lg px-5 mt-3">
+        Update Customer
+    </button>
+
+</form>
+</div>
+
+{% endblock %}
