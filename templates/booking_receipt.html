@@ -352,95 +352,41 @@
 
         </tr>
 
-        <!-- LPG Commercial -->
-
-        <tr style="height:70px;">
-
-            <td></td>
-
-            <td>
-
-                LPG Commercial
-                <br>
-                Gas
-
-            </td>
-
-            <td></td>
-
-            <td></td>
-
-            <td></td>
-
-        </tr>
+       
 
         <!-- Main Cylinder -->
 
-        <tr style="height:60px;">
+<tr style="height:60px;">
 
-            <td>1</td>
+    <td>1</td>
 
-            <td>
+    <td>
 
-                LPG CYL {{ customer.cylinder_type }}
+        LPG CYL {{ booking.cylinder_type }}
 
-            </td>
+    </td>
 
-            <td>
+    <td>
 
-                {{ booking.cylinder_qty }}
+        {{ booking.cylinder_qty }}
 
-            </td>
+    </td>
 
-            <td>
+    <td>
 
-                {{ rate }}
+        {{ rate }}
 
-            </td>
+    </td>
 
-            <td>
+    <td>
 
-                ₹ {{ basic_amount }}
+        ₹ {{ basic_amount }}
 
-            </td>
+    </td>
 
-        </tr>
+</tr>
 
-        <!-- 15 KG -->
-
-        <tr style="height:60px;">
-
-            <td></td>
-
-            <td>
-                LPG CYL 15
-            </td>
-
-            <td></td>
-
-            <td></td>
-
-            <td></td>
-
-        </tr>
-
-        <!-- 13.5 -->
-
-        <tr style="height:60px;">
-
-            <td></td>
-
-            <td>
-                LPG CYL 13.5
-            </td>
-
-            <td></td>
-
-            <td></td>
-
-            <td></td>
-
-        </tr>
+       
 
         <!-- Other Exp -->
 
@@ -528,21 +474,41 @@
 
     </div>
 
-    <div class="footer">
+   <div class="footer">
 
-        <div class="signature">
+    <div class="signature">
 
-            Authorised Signatory
+        Owner Signatory
 
-        </div>
+    </div>
 
-        <div class="signature">
+    <div style="
+        width:250px;
+        text-align:center;
+    ">
 
-            Signature
+        <img src="{{ url_for('static',
+                             filename='images/ayushi_sign.png') }}"
+             style="
+             width:180px;
+             height:auto;
+             margin-bottom:5px;
+             ">
+
+        <div style="
+            border-top:2px solid black;
+            padding-top:10px;
+            font-size:20px;
+            font-weight:bold;
+        ">
+
+            For Ayushi Enterprises
 
         </div>
 
     </div>
+
+</div>
 
     <div class="note">
 
