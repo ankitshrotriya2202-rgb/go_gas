@@ -645,7 +645,7 @@
 				<th>RATE</th>
 				<th>QUANTITY</th>
 				<th>AMOUNT</th>
-				<th>PAYMENT TYPE</th>
+				<th>RECEIVED AMOUNT</th>
 
             </tr>
 
@@ -677,7 +677,7 @@
 
     <td>
 
-        {{ customer.payment_type }}
+        ₹ {{ customer.payment_amount }}
 
     </td>
 
@@ -686,36 +686,60 @@
         </table>
 
         <!-- SIGNATURE -->
+		
+		<!-- AYUSHI SIGN & SEAL -->
 
-        <div class="signatures">
+<!-- SIGNATURES -->
 
-            <div style="text-align:center; width:40%;">
+<div style="
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-top:40px;
+">
 
-                <div style="
-                    border-top:1px solid black;
-                    padding-top:10px;
-                ">
+    <!-- LEFT -->
 
-                    Customer Signature
+    <div style="
+        width:35%;
+        text-align:center;
+    ">
 
-                </div>
-
-            </div>
-
-            <div style="text-align:center; width:40%;">
-
-                <div style="
-                    border-top:1px solid black;
-                    padding-top:10px;
-                ">
-
-                    Receiver Signature
-
-                </div>
-
-            </div>
-
+        <div style="
+            border-top:1px solid black;
+            padding-top:8px;
+            font-weight:bold;
+        ">
+            Owner Signature
         </div>
+
+    </div>
+
+    <!-- RIGHT -->
+
+    <div style="
+        width:35%;
+        text-align:center;
+    ">
+
+        <img src="{{ url_for('static',
+                             filename='images/ayushi_sign.png') }}"
+             style="
+             width:140px;
+             margin-bottom:5px;
+             ">
+
+        <div style="
+            border-top:1px solid black;
+            padding-top:8px;
+            font-weight:bold;
+        ">
+            For Ayushi Enterprises
+        </div>
+
+    </div>
+
+</div>
 
         <!-- PRINT -->
 
