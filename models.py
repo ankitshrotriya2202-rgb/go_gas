@@ -29,7 +29,7 @@ class Customer(db.Model):
 
     regulator_no = db.Column(db.String(255))
 
-    stove_details = db.Column(db.String(255))
+    
 
     pipe_issue_date = db.Column(db.String(255))
 
@@ -53,7 +53,9 @@ class Customer(db.Model):
     
     rate = db.Column(db.Numeric(10,2))
 
-    payment_type = db.Column(db.String(50))
+    
+    
+    payment_amount = db.Column(db.Numeric(10,2))
 
 
 class Booking(db.Model):
