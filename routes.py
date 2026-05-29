@@ -165,7 +165,7 @@ def register_routes(app):
 
                 regulator_no=request.form['regulator_no'],
 
-                stove_details=request.form['stove_details'],
+                
 
                 pipe_issue_date=request.form['pipe_issue_date'],
 
@@ -189,7 +189,9 @@ def register_routes(app):
                 
                 rate=request.form['rate'],
 
-                payment_type=request.form['payment_type'],
+               
+                
+                payment_amount=request.form['payment_amount'],
 
             )
 
