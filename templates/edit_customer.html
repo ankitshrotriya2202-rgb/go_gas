@@ -210,12 +210,53 @@
                       rows="3">{{ customer.remarks }}</textarea>
         </div>
 
-        <div class="col-md-4 mb-3">
-            <label class="mb-2">Bill Type</label>
-            <input type="text" name="bill_type"
-                   value="{{ customer.bill_type }}"
-                   class="form-control form-control-lg">
-        </div>
+       <div class="col-md-4 mb-3">
+
+    <label class="mb-2">
+        Bill Type
+    </label>
+
+    <select name="bill_type"
+            class="form-control form-control-lg">
+
+        <option value="Bill To Bill"
+            {% if customer.bill_type == 'Bill To Bill' %}
+            selected
+            {% endif %}>
+            Bill To Bill
+        </option>
+
+        <option value="Cash"
+            {% if customer.bill_type == 'Cash' %}
+            selected
+            {% endif %}>
+            Cash
+        </option>
+
+        <option value="Bank Tranfer"
+            {% if customer.bill_type == 'Bank Tranfer' %}
+            selected
+            {% endif %}>
+            Bank Tranfer
+        </option>
+
+        <option value="Cheque"
+            {% if customer.bill_type == 'Cheque' %}
+            selected
+            {% endif %}>
+            Cheque
+        </option>
+
+        <option value="UPI"
+            {% if customer.bill_type == 'UPI' %}
+            selected
+            {% endif %}>
+            UPI
+        </option>
+
+    </select>
+
+</div>
 
         <div class="col-md-4 mb-3">
             <label class="mb-2">Security Deposit</label>
