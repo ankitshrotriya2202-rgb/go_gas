@@ -70,40 +70,33 @@ def register_routes(app):
 
             file = request.files.get('payment_proof')
 
-            if file and file.filename != '':
-
+            if file and file.filename:
+            
                 filename = secure_filename(file.filename)
-
-                file = request.files.get('payment_proof')
-
-                if file and file.filename != '':
-                
-                    filename = secure_filename(file.filename)
-                
-                    upload_folder = os.path.join(
-                        app.root_path,
-                        'static',
-                        'uploads'
-                    )
-                
-                    os.makedirs(
-                        upload_folder,
-                        exist_ok=True
-                    )
-                
-                    upload_path = os.path.join(
-                        upload_folder,
-                        filename
-                    )
-                
-                    file.save(upload_path)
-                
-                    booking.payment_proof = filename
-
+            
+                upload_folder = os.path.join(
+                    app.root_path,
+                    'static',
+                    'uploads'
+                )
+            
+                os.makedirs(upload_folder, exist_ok=True)
+            
+                upload_path = os.path.join(
+                    upload_folder,
+                    filename
+                )
+            
+                print("Saving to:", upload_path)
+            
                 file.save(upload_path)
-
+            
+                print(
+                    "Saved:",
+                    os.path.exists(upload_path)
+                )
+            
                 booking.payment_proof = filename
-
 
             db.session.commit()
 
