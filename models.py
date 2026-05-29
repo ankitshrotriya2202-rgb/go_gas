@@ -44,6 +44,16 @@ class Customer(db.Model):
     remarks = db.Column(db.Text)
     
     bill_type = db.Column(db.String(100))
+    
+    office_mobile = db.Column(db.String(20))
+    
+    regulator_qty = db.Column(db.Integer, default=0)
+
+    connector_qty = db.Column(db.Integer, default=0)
+    
+    rate = db.Column(db.Numeric(10,2))
+
+    payment_type = db.Column(db.String(50))
 
 
 class Booking(db.Model):
