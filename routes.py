@@ -102,14 +102,28 @@ def register_routes(app):
     # CUSTOMERS
     # =========================
 
+    from sqlalchemy import asc, desc
+
     @app.route('/customers')
     def customers():
-
-        customer_list = Customer.query.all()
-
+    
+        sort = request.args.get('sort')
+        order = request.args.get('order', 'asc')
+    
+        query = Customer.query
+    
+        if sort == 'customer_name':
+    
+            if order == 'desc':
+                query = query.order_by(desc(Customer.customer_name))
+            else:
+                query = query.order_by(asc(Customer.customer_name))
+    
+        customers = query.all()
+    
         return render_template(
             'customers.html',
-            customers=customer_list
+            customers=customers
         )
 
 
