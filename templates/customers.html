@@ -38,7 +38,14 @@
 
             <th>Consumer No</th>
 
-            <th>Customer Name</th>
+           <th>
+    <a href="{{ url_for('customers',
+                        sort='customer_name',
+                        order='asc' if request.args.get('order') == 'desc' else 'desc') }}"
+       style="text-decoration:none;color:black;">
+        Customer Name ↕
+    </a>
+</th>
 
             <th>Mobile</th>
 
