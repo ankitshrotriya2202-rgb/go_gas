@@ -13,7 +13,7 @@
             font-family:"Times New Roman";
             background:#f5f5f5;
             padding:20px;
-        }da
+        }
 
         .voucher{
 
@@ -159,7 +159,7 @@
             letter-spacing:1px;
         }
 
-        .{
+        .date{
             font-size:20px;
             font-weight:bold;
         }
@@ -270,22 +270,16 @@
             margin-top:40px;
         }
 
-        @media print{
+        @media print {
 
-            .print-btn{
-                display:none;
-            }
+    .voucher-title{
+        background:#1e3a8a !important;
+        color:white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
 
-            body{
-                background:white;
-                padding:0;
-            }
-
-            .voucher{
-                box-shadow:none;
-            }
-
-        }
+}
 
     </style>
 
@@ -370,7 +364,7 @@
 
             </div>
 
-            <div class="date">
+           <div class="date">
     Date:
     {{ customer.pipe_issue_date }}
 </div>
@@ -647,7 +641,7 @@
 
             </tr>
 
-            <tr style="height:180px;">
+            <tr style="height:80px;">
 
     <td>
 
