@@ -104,6 +104,8 @@ def register_routes(app):
 
     from sqlalchemy import asc, desc
 
+    from sqlalchemy import asc, desc
+
     @app.route('/customers')
     def customers():
     
@@ -113,11 +115,18 @@ def register_routes(app):
         query = Customer.query
     
         if sort == 'customer_name':
+            query = query.order_by(
+                desc(Customer.customer_name)
+                if order == 'desc'
+                else asc(Customer.customer_name)
+            )
     
-            if order == 'desc':
-                query = query.order_by(desc(Customer.customer_name))
-            else:
-                query = query.order_by(asc(Customer.customer_name))
+        elif sort == 'consumer_no':
+            query = query.order_by(
+                desc(Customer.consumer_no)
+                if order == 'desc'
+                else asc(Customer.consumer_no)
+            )
     
         customers = query.all()
     
