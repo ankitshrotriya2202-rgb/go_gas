@@ -36,7 +36,14 @@
 
         <tr>
 
-            <th>Consumer No</th>
+            <th>
+    <a href="{{ url_for('customers',
+                        sort='consumer_no',
+                        order='asc' if request.args.get('order') == 'desc' else 'desc') }}"
+       style="text-decoration:none;color:black;">
+        Consumer No ↕
+    </a>
+</th>
 
            <th>
     <a href="{{ url_for('customers',
