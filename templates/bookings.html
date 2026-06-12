@@ -188,8 +188,11 @@
             <th>Consumer</th>
 
             <th>Cylinder</th>
+			
+			
 
             <th>Qty</th>
+			<th>Pending Cylinder</th>
 
             <th>Rate</th>
 
@@ -197,9 +200,12 @@
 			
 			<th>Remarks</th>
 			
+			
+			
 			<th>Delivery Remarks</th>
 
             <th>Delivery</th>
+		
 
             <th>Payment</th>
 
@@ -248,6 +254,12 @@
                 {{ booking.cylinder_qty }}
 
             </td>
+			
+			<td>
+    {{ customer_map[booking.consumer_no].pending_cylinder
+       if booking.consumer_no in customer_map
+       else 0 }}
+</td>
 
             <td>
 
