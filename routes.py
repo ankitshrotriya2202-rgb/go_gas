@@ -49,20 +49,43 @@ def register_routes(app):
 
         booking = Booking.query.get_or_404(id)
 
+        customer = Customer.query.filter_by(
+            consumer_no=booking.consumer_no
+        ).first()
+
         if request.method == 'POST':
 
             booking.status = 'Delivered'
-
             booking.payment_status = 'Paid'
-
             booking.payment_mode = request.form['payment_mode']
-
             booking.utr_no = request.form['utr_no']
-            
-            booking.delivery_remarks = request.form[
-                'delivery_remarks'
-            ]
+            booking.delivery_remarks = request.form['delivery_remarks']
 
+            # Empty Cylinder Received
+            empty_received = int(
+                request.form.get(
+                    'empty_cylinder_received',
+                    0
+                )
+            )
+
+            # Validation
+            if customer and empty_received > customer.pending_cylinder:
+
+                flash(
+                    f'Pending Cylinder only {customer.pending_cylinder}',
+                    'danger'
+                )
+
+                return redirect(request.url)
+
+            # Update Pending Cylinder
+            if customer:
+
+                customer.pending_cylinder = max(
+                    0,
+                    customer.pending_cylinder - empty_received
+                )
 
             # =========================
             # FILE UPLOAD
@@ -83,17 +106,14 @@ def register_routes(app):
 
                 booking.payment_proof = filename
 
-
             db.session.commit()
 
             return redirect('/bookings')
 
         return render_template(
-
             'deliver_booking.html',
-
-            booking=booking
-
+            booking=booking,
+            customer=customer
         )
 
 
@@ -104,32 +124,31 @@ def register_routes(app):
 
     from sqlalchemy import asc, desc
 
-    from sqlalchemy import asc, desc
 
     @app.route('/customers')
     def customers():
-    
+
         sort = request.args.get('sort')
         order = request.args.get('order', 'asc')
-    
+
         query = Customer.query
-    
+
         if sort == 'customer_name':
             query = query.order_by(
                 desc(Customer.customer_name)
                 if order == 'desc'
                 else asc(Customer.customer_name)
             )
-    
+
         elif sort == 'consumer_no':
             query = query.order_by(
                 desc(Customer.consumer_no)
                 if order == 'desc'
                 else asc(Customer.consumer_no)
             )
-    
+
         customers = query.all()
-    
+
         return render_template(
             'customers.html',
             customers=customers
@@ -289,7 +308,7 @@ def register_routes(app):
                 rate=request.form[
                     'rate'
                 ],
-                
+
                 remarks=request.form['remarks'],
 
                 status='Pending',
@@ -299,6 +318,21 @@ def register_routes(app):
             )
 
             db.session.add(booking)
+
+            # Pending Cylinder Increase
+            customer = Customer.query.filter_by(
+                consumer_no=request.form[
+                    'consumer_no'
+                ].strip()
+            ).first()
+
+            if customer:
+
+                customer.pending_cylinder = (
+                    customer.pending_cylinder or 0
+                ) + int(
+                    request.form['cylinder_qty']
+                )
 
             db.session.commit()
 
@@ -322,6 +356,11 @@ def register_routes(app):
             Customer.customer_name
         ).all()
 
+        customer_map = {
+            c.consumer_no: c
+            for c in customers
+        }
+
         return render_template(
 
             'bookings.html',
@@ -330,7 +369,9 @@ def register_routes(app):
 
             next_booking_no=next_booking_no,
 
-            customers=customers
+            customers=customers,
+
+            customer_map=customer_map
 
         )
 
