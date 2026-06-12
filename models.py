@@ -56,6 +56,7 @@ class Customer(db.Model):
     
     
     payment_amount = db.Column(db.Numeric(10,2))
+    pending_cylinder = db.Column(db.Integer, default=0)
 
 
 class Booking(db.Model):
